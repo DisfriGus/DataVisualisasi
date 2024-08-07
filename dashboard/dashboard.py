@@ -26,23 +26,8 @@ reviews_df = load_data(reviews_url)
 catName_df = load_data(catName_url)
 
 st.title("E-Commerce Public Data Analysis")
+st.header("Dio Irsaputra Siregar")
 
-st.header("Data Overview")
-st.subheader("Product Data")
-st.write(product_df.head())
-st.subheader("Order Items Data")
-st.write(orderItems_df.head())
-st.subheader("Orders Data")
-st.write(orders_df.head())
-st.subheader("Reviews Data")
-st.write(reviews_df.head())
-st.subheader("Category Names Data")
-st.write(catName_df.head())
-
-st.header("Data Wrangling and Cleaning")
-
-# Cleaning Data Product
-st.subheader("Cleaning Product Data")
 product_df['product_category_name'] = product_df['product_category_name'].fillna(
     '-')
 product_df['product_name_lenght'] = product_df['product_name_lenght'].fillna(
@@ -63,16 +48,24 @@ st.write(product_df.info())
 
 # Cleaning Data Order
 orders_df = orders_df[orders_df['order_status'] == 'delivered']
-st.subheader("Cleaning Order Data")
-st.write(orders_df.info())
 
 # Cleaning Data Review
 reviews_df['review_comment_title'] = reviews_df['review_comment_title'].fillna(
     '-')
 reviews_df['review_comment_message'] = reviews_df['review_comment_message'].fillna(
     '-')
-st.subheader("Cleaning Review Data")
-st.write(reviews_df.info())
+
+st.header("Data Overview")
+st.subheader("Product Data")
+st.write(product_df.head())
+st.subheader("Order Items Data")
+st.write(orderItems_df.head())
+st.subheader("Orders Data")
+st.write(orders_df.head())
+st.subheader("Reviews Data")
+st.write(reviews_df.head())
+st.subheader("Category Names Data")
+st.write(catName_df.head())
 
 st.header("Exploratory Data Analysis (EDA)")
 
@@ -95,12 +88,12 @@ percentage_up3 = orders_orderItems_review_df_up3['review_id'].count(
 ) / orders_orderItems_review_df['review_id'].count() * 100
 
 st.subheader("Distribution of Ratings")
-st.write(f"Percentage of ratings below 3: {percentage_under3:.2f}%")
-st.write(f"Percentage of ratings 3 and above: {percentage_up3:.2f}%")
+st.write(f"Persentase rating dibawah 3: {percentage_under3:.2f}%")
+st.write(f"Persentase rating 3 dan diatas: {percentage_up3:.2f}%")
 
 # Visualization for Question 1
 data = {
-    'category': ['Rating Diatas 3', 'Rating Dibawah 3'],
+    'category': ['Rating 3 Ke Atas', 'Rating Dibawah 3'],
     'count': [orders_orderItems_review_df_up3['review_id'].count(), orders_orderItems_review_df_under3['review_id'].count()]
 }
 rating_df = pd.DataFrame(data)
