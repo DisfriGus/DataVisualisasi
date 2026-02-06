@@ -1,5 +1,6 @@
-matplotlib
-numpy
-pandas
-seaborn
 streamlit
+pandas
+numpy
+matplotlib
+seaborn
+altair==4.2.2
